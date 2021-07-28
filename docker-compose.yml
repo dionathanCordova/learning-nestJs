@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    entrypoint: ./.Docker/entrypoint.sh
+    container_name: projetct-cond-app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/app
+
+  db:
+    build: ./.Docker/mysql
+    container_name: projetct-cond-db
+    restart: always
+    tty: true
+    ports:
+      - '33006:3306'
+    volumes:
+      - ./.Docker/dbdata:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=condominio
+      - MYSQL_ROOT_PASSWORD=123.456
+      - MYSQL_USER=admin
