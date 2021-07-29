@@ -18,10 +18,10 @@ services:
     restart: always
     tty: true
     ports:
-      - '33006:3306'
+      - '3306:3306'
     volumes:
       - ./.Docker/dbdata:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=condominio
       - MYSQL_ROOT_PASSWORD=123.456
-      - MYSQL_USER=admin
+      - MYSQL_USER=root
