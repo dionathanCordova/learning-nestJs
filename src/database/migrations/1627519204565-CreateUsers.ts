@@ -45,6 +45,11 @@ export class CreateUsers1627519204565 implements MigrationInterface {
             name: 'condominio_id',
             type: 'int',
           },
+          {
+            name: 'created_at',
+            type: 'timestamp',
+            default: 'CURRENT_TIMESTAMP',
+          },
         ],
       }),
     );

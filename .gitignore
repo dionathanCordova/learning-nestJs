@@ -34,6 +34,7 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 .npm-cache/_cacache/**
+
 .Docker/*
 
 .env
