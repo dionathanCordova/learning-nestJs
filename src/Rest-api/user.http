@@ -1,0 +1,38 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Dionathan Cordova",
+  "email": "dionathan.cordova@gmail.com",
+  "telefone": "47 9 9999-9999",
+  "apartamento": 302,
+  "password": "teste",
+  "permissionNivel": 0,
+  "image": "null",
+  "condominio_id": 7
+}
+
+
+###
+GET http://localhost:3000/users
+
+###
+GET http://localhost:3000/users/1
+
+###
+PUT http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+  "name": "Dionathan Cordova",
+  "email": "dionathan.cordova@gmail.com",
+  "telefone": "47 9 9999-9991",
+  "apartamento": 301,
+  "password": "teste1",
+  "permissionNivel": 1,
+  "image": "null",
+  "condominio_id": 71
+}
+
+###
+Delete http://localhost:3000/users/1

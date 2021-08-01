@@ -1,24 +1,30 @@
 const connection = {
-  type: process.env.DB_CONNECTION,
-  host: process.env.DB_HOST,
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  port: Number(process.env.DB_PORT),
+  // type: process.env.DB_CONNECTION,
+  // host: process.env.DB_HOST,
+  // username: process.env.DB_USERNAME,
+  // password: process.env.DB_PASSWORD,
+  // database: process.env.DB_DATABASE,
+
+  type: process.env.PG_DB_CONNECTION,
+  host: process.env.PG_DB_HOST,
+  username: process.env.PG_DB_USERNAME,
+  password: process.env.PG_DB_PASSWORD,
+  database: process.env.PG_DB_DATABASE,
+  port: Number(process.env.PG_DB_PORT),
   entities:
     process.env.NODE_ENV === 'production'
-      ? ['./dist/database/entities/*.js']
-      : ['./src/database/entities/*.ts'],
+      ? ['./dist/models/*.js']
+      : [process.env.PG_DB_ENTITIES_DIR],
   entitiesDir: process.env.DB_ENTITIES_DIR,
   migrations:
-    process.env.NODE_ENV === 'development'
+    process.env.NODE_ENV === 'production'
       ? ['./dist/database/migrations/*.js']
-      : ['./src/database/migrations/*.ts'],
+      : [process.env.PG_DB_MIGRATIONS],
   cli: {
     migrationsDir:
-      process.env.NODE_ENV === 'development'
+      process.env.NODE_ENV === 'production'
         ? './dist/database/migrations'
-        : './src/database/migrations',
+        : process.env.PG_DB_MIGRATIONS_DIR,
   },
   synchronize: false,
   logging: process.env.NODE_ENV == 'development' ? true : false,
