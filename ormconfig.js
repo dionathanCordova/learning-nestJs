@@ -1,15 +1,9 @@
 const connection = {
-  // type: process.env.DB_CONNECTION,
-  // host: process.env.DB_HOST,
-  // username: process.env.DB_USERNAME,
-  // password: process.env.DB_PASSWORD,
-  // database: process.env.DB_DATABASE,
-
-  type: process.env.PG_DB_CONNECTION,
-  host: process.env.PG_DB_HOST,
-  username: process.env.PG_DB_USERNAME,
-  password: process.env.PG_DB_PASSWORD,
-  database: process.env.PG_DB_DATABASE,
+  type: process.env.DB_CONNECTION,
+  host: process.env.DB_HOST,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
   port: Number(process.env.PG_DB_PORT),
   entities:
     process.env.NODE_ENV === 'production'

@@ -3,8 +3,8 @@ version: '3'
 services:
   app:
     build: .
-    entrypoint: ./.Docker/entrypoint.sh
-    container_name: project-cond-app
+    entrypoint: ./.docker/entrypoint.sh
+    container_name: project_cond_app
     environment:
       - CHOKIDAR_USEPOLLING=true
     ports:
@@ -14,7 +14,7 @@ services:
 
   # db:
   #   build: ./.Docker/mysql
-  #   container_name: project-cond-db
+  #   container_name: project_cond_db
   #   restart: always
   #   tty: true
   #   ports:
@@ -24,28 +24,27 @@ services:
   #   environment:
   #     - MYSQL_DATABASE=condominio
   #     - MYSQL_ROOT_PASSWORD=123.456
-  #     - MYSQL_USER=root
 
-  condominio_db:
-    build: ./.Docker/postgres
-    container_name: project-api-db
-    restart: always
-    tty: true
-    ports:
-      - '5432:5432'
-    volumes:
-      - .Docker/dbdataPostgres:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=condominio_db
+  # condominio_db:
+  #   build: ./.Docker/postgres
+  #   container_name: project-api-db
+  #   restart: always
+  #   tty: true
+  #   ports:
+  #     - '5432:5432'
+  #   volumes:
+  #     - .Docker/dbdataPostgres:/var/lib/postgresql/data
+  #   environment:
+  #     - POSTGRES_PASSWORD=root
+  #     - POSTGRES_DB=condominio_db
 
-  pgadmin:
-    image: dpage/pgadmin4
-    tty: true
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@user.com
-      - PGADMIN_DEFAULT_PASSWORD=123.456
-    ports:
-      - '9000:80'
-    depends_on:
-      - condominio_db
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   tty: true
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=admin@user.com
+  #     - PGADMIN_DEFAULT_PASSWORD=123.456
+  #   ports:
+  #     - '9000:80'
+  #   depends_on:
+  #     - condominio_db

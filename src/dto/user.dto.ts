@@ -22,7 +22,7 @@ export class UserDTO {
   password: string;
 
   @ApiProperty({ type: Number, description: 'Level of permision of user' })
-  permissionNivel: number;
+  permission_nivel: number;
 
   @ApiProperty()
   image: string;

@@ -35,8 +35,9 @@ lerna-debug.log*
 
 .npm-cache/_cacache/**
 
-.Docker/*
-.Docker
+.docker/*
+.docker
+.npm_cache/*
 .npm_cache
 
 .env
