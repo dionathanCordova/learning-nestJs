@@ -12,12 +12,12 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Usuarios } from 'src/models/usuarios.model';
 import { Repository } from 'typeorm';
 
 import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
 import { UserResponse } from 'src/api-doc/user.response';
 import { UserDTO } from 'src/dto/user.dto';
+import { Usuarios } from './entities/user.entity';
 
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller('users')

@@ -1,11 +1,16 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import { EntityNotFoundExceptionFilter } from './exception-filters/entity-not-found.exception-filter';
+import { EntityNotFoundExceptionFilter } from './config/filters/entity-not-found.exception-filter';
+import { QueryFailedExceptionFilter } from './config/filters/query-failed-exception-filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalFilters(new EntityNotFoundExceptionFilter()); // error handler
+  // error handler
+  app.useGlobalFilters(
+    new EntityNotFoundExceptionFilter(),
+    new QueryFailedExceptionFilter(),
+  );
 
   // documentacao
   const options = new DocumentBuilder()
@@ -13,7 +18,6 @@ async function bootstrap() {
     .setDescription('Documentação da aplicacao condominio')
     .build();
 
-  // documentacao
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
